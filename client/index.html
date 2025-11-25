@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preis Vergleicher</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Herzlich Willkomen</h1>
+      <h2></h2>
+    </header>
+
+    <main>
+      <section>
+        <h3>Preis Vergleicher</h3>
+        <p id="main_desc">
+          Willkommen zum Preis Vergleicher! Hier können Sie die Preise von
+          verschiedenen Produkten bei Migros, Coop, Lidl und Aldi vergleichen.
+          Geben Sie einfach die Produktnamen ein und klicken Sie auf "Preise
+          Vergleichen", um die aktuellen Preise zu sehen.
+        </p>
+      </section>
+      <section id="tabel">
+        <table>
+          <tr>
+            <th>Auswählen</th>
+            <th>Produktname</th>
+            <th>Migros</th>
+            <th>Coop</th>
+            <th>Lidl</th>
+            <th>Aldi</th>
+          </tr>
+
+          <tr>
+            <td><input type="checkbox" id="cb_milk" /></td>
+            <td>Milch</td>
+            <td>api</td>
+            <td>api</td>
+            <td>api</td>
+            <td>api</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" id="cb_bread" /></td>
+            <td>Brot</td>
+            <td>api</td>
+            <td>api</td>
+            <td>api</td>
+            <td>api</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" id="cb_eggs" /></td>
+            <td>Eier</td>
+            <td>api</td>
+            <td>api</td>
+            <td>api</td>
+            <td>api</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+
+    <script>
+      const cb_milk = document.getElementById("cb_milk");
+      const cb_bread = document.getElementById("cb_bread");
+      const cb_eggs = document.getElementById("cb_eggs");
+
+      cb_milk.addEventListener("change", milkHandler);
+      cb_bread.addEventListener("change", breadHandler);
+      cb_eggs.addEventListener("change", eggsHandler);
+
+      function milkHandler() {
+        if (cb_milk.checked) {
+          console.log("Milch ausgewählt");
+        } else {
+          console.log("Milch nicht ausgewählt");
+        }
+      }
+
+      function breadHandler() {
+        if (cb_bread.checked) {
+          console.log("Brot ausgewählt");
+        } else {
+          console.log("Brot nicht ausgewählt");
+        }
+      }
+
+      function eggsHandler() {
+        if (cb_eggs.checked) {
+          console.log("Eier ausgewählt");
+        } else {
+          console.log("Eier nicht ausgewählt");
+        }
+      }
+    </script>
+  </body>
+</html>

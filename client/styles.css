@@ -1,0 +1,16 @@
+body {
+  font-family: Arial;
+  color: #333;
+}
+
+header {
+  padding: 50px;
+  background-color: cornflowerblue;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+main {
+  padding: 20px;
+  margin: auto;
+}
