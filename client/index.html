@@ -9,6 +9,7 @@
   <body>
     <header>
       <h1>Herzlich Willkomen</h1>
+      <button id="testCorsBtn">Test CORS</button>
       <h2></h2>
     </header>
 
@@ -21,6 +22,7 @@
           Geben Sie einfach die Produktnamen ein und klicken Sie auf "Preise
           Vergleichen", um die aktuellen Preise zu sehen.
         </p>
+        <h4 id="statusText-test"></h4>
       </section>
       <section id="tabel">
         <table>
@@ -36,26 +38,26 @@
           <tr>
             <td><input type="checkbox" id="cb_milk" /></td>
             <td>Milch</td>
-            <td>api</td>
-            <td>api</td>
-            <td>api</td>
-            <td>api</td>
+            <td id="milk_mig"></td>
+            <td id="milk_coop"></td>
+            <td id="milk_lidl"></td>
+            <td id="milk_aldi"></td>
           </tr>
           <tr>
             <td><input type="checkbox" id="cb_bread" /></td>
             <td>Brot</td>
-            <td>api</td>
-            <td>api</td>
-            <td>api</td>
-            <td>api</td>
+            <td id="bread_mig"></td>
+            <td id="bread_coop"></td>
+            <td id="bread_lidl"></td>
+            <td id="bread_aldi"></td>
           </tr>
           <tr>
             <td><input type="checkbox" id="cb_eggs" /></td>
             <td>Eier</td>
-            <td>api</td>
-            <td>api</td>
-            <td>api</td>
-            <td>api</td>
+            <td id="eggs_mig"></td>
+            <td id="eggs_coop"></td>
+            <td id="eggs_lidl"></td>
+            <td id="eggs_aldi"></td>
           </tr>
         </table>
       </section>
@@ -65,31 +67,67 @@
       const cb_milk = document.getElementById("cb_milk");
       const cb_bread = document.getElementById("cb_bread");
       const cb_eggs = document.getElementById("cb_eggs");
+      const testCorsBtn = document.getElementById("testCorsBtn");
+
+      const statusText = document.getElementById("statusText-test");
+      testCorsBtn.addEventListener("click", corsHandler);
+      async function corsHandler() {
+        const response = await fetch("http://localhost:3210/api/cors-test");
+        const data = await response.json();
+        console.log(data);
+        statusText.textContent = data.message;
+      }
 
       cb_milk.addEventListener("change", milkHandler);
-      cb_bread.addEventListener("change", breadHandler);
-      cb_eggs.addEventListener("change", eggsHandler);
-
-      function milkHandler() {
+      async function milkHandler() {
+        const response = await fetch("http://localhost:3210/api/select-milk");
         if (cb_milk.checked) {
           console.log("Milch ausgewählt");
+          document.getElementById("milk_mig").textContent = "1.0 CHF";
+          document.getElementById("milk_coop").textContent = "Preis";
+          document.getElementById("milk_lidl").textContent = "Preis";
+          document.getElementById("milk_aldi").textContent = "Preis";
         } else {
           console.log("Milch nicht ausgewählt");
+          document.getElementById("milk_mig").textContent = "";
+          document.getElementById("milk_coop").textContent = "";
+          document.getElementById("milk_lidl").textContent = "";
+          document.getElementById("milk_aldi").textContent = "";
         }
       }
 
-      function breadHandler() {
+      cb_bread.addEventListener("change", breadHandler);
+      async function breadHandler() {
+        const response = await fetch("http://localhost:3210/api/select-bread");
         if (cb_bread.checked) {
+          document.getElementById("bread_mig").textContent = "1.5 CHF";
+          document.getElementById("bread_coop").textContent = "Preis";
+          document.getElementById("bread_lidl").textContent = "Preis";
+          document.getElementById("bread_aldi").textContent = "Preis";
           console.log("Brot ausgewählt");
         } else {
+          document.getElementById("bread_mig").textContent = "";
+          document.getElementById("bread_coop").textContent = "";
+          document.getElementById("bread_lidl").textContent = "";
+          document.getElementById("bread_aldi").textContent = "";
           console.log("Brot nicht ausgewählt");
         }
       }
 
-      function eggsHandler() {
+      cb_eggs.addEventListener("change", eggsHandler);
+      async function eggsHandler() {
+        const response = await fetch("http://localhost:3210/api/select-eggs");
         if (cb_eggs.checked) {
+          document.getElementById("eggs_mig").textContent = "3.0 CHF";
+          document.getElementById("eggs_coop").textContent = "Preis";
+          document.getElementById("eggs_lidl").textContent = "Preis";
+          document.getElementById("eggs_aldi").textContent = "Preis";
           console.log("Eier ausgewählt");
         } else {
+          document.getElementById("eggs_mig").textContent = "";
+          document.getElementById("eggs_coop").textContent = "";
+          document.getElementById("eggs_lidl").textContent = "";
+          document.getElementById("eggs_aldi").textContent = "";
           console.log("Eier nicht ausgewählt");
         }
       }
