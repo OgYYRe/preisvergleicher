@@ -14,14 +14,6 @@ app.get("/", (req, res) => {
   console.log("Received a request at http://localhost:3210/");
 });
 
-app.get("/api/cors-test", (req, res) => {
-  console.log('"CORS test" endpoint is working.');
-  res.json({
-    message: "Cors is working!",
-    value: "Server and Client can communicate successfully.",
-  });
-});
-
 app.get("/api/select-milk", (req, res) => {
   res.send("Milk selected");
   console.log("Milk selection received.");
