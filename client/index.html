@@ -9,9 +9,7 @@
   </head>
   <body>
     <header>
-      <h1>Herzlich Willkomen</h1>
-      <button id="testCorsBtn">Test CORS</button>
-      <h2></h2>
+      <h1>Herzlich Willkommen</h1>
     </header>
 
     <main>
@@ -20,16 +18,16 @@
         <p id="main_desc">
           Willkommen zum Preis Vergleicher! Hier können Sie die Preise von
           verschiedenen Produkten bei Migros, Coop, Lidl und Aldi vergleichen.
-          Geben Sie einfach die Produktnamen ein und klicken Sie auf "Preise
-          Vergleichen", um die aktuellen Preise zu sehen.
+          Wählen Sie einfach die Produkte aus, die Sie vergleichen möchten, und
+          sehen Sie die Preise auf einen Blick.
         </p>
         <h4 id="statusText-test"></h4>
       </section>
       <section id="tabel">
         <table>
           <tr>
-            <th>Auswählen</th>
-            <th>Produktname</th>
+            <th>Auswähl</th>
+            <th>Produkt</th>
             <th>Migros</th>
             <th>Coop</th>
             <th>Lidl</th>
@@ -38,27 +36,75 @@
 
           <tr>
             <td><input type="checkbox" id="cb_milk" /></td>
-            <td>Milch (1lt.)</td>
-            <td id="milk_mig"></td>
-            <td id="milk_coop"></td>
-            <td id="milk_lidl"></td>
-            <td id="milk_aldi"></td>
+            <td>Milch</td>
+            <td>
+              <img src="images/migros_milch.webp" alt="Milch" width="40" /><span
+                id="milk_mig"
+              ></span>
+            </td>
+            <td>
+              <img src="images/coop_milch.webp" alt="Milch" width="40" /><span
+                id="milk_coop"
+              ></span>
+            </td>
+            <td>
+              <img src="images/lidl_milch.webp" alt="Milch" width="40" /><span
+                id="milk_lidl"
+              ></span>
+            </td>
+            <td>
+              <img src="images/aldi_milch.webp" alt="Milch" width="40" /><span
+                id="milk_aldi"
+              ></span>
+            </td>
           </tr>
           <tr>
             <td><input type="checkbox" id="cb_bread" /></td>
-            <td>Brot (500g)</td>
-            <td id="bread_mig"></td>
-            <td id="bread_coop"></td>
-            <td id="bread_lidl"></td>
-            <td id="bread_aldi"></td>
+            <td>Brot</td>
+            <td>
+              <img src="images/migros_brot.webp" alt="Brot" width="40" /><span
+                id="bread_mig"
+              ></span>
+            </td>
+            <td>
+              <img src="images/coop_brot.webp" alt="Brot" width="40" /><span
+                id="bread_coop"
+              ></span>
+            </td>
+            <td>
+              <img src="images/lidl_brot.webp" alt="Brot" width="40" /><span
+                id="bread_lidl"
+              ></span>
+            </td>
+            <td>
+              <img src="images/aldi_brot.webp" alt="Brot" width="40" /><span
+                id="bread_aldi"
+              ></span>
+            </td>
           </tr>
           <tr>
             <td><input type="checkbox" id="cb_eggs" /></td>
-            <td>Eier (6 Stück)</td>
-            <td id="eggs_mig"></td>
-            <td id="eggs_coop"></td>
-            <td id="eggs_lidl"></td>
-            <td id="eggs_aldi"></td>
+            <td>Eier</td>
+            <td>
+              <img src="images/migros_eier.webp" alt="Eier" width="40" /><span
+                id="eggs_mig"
+              ></span>
+            </td>
+            <td>
+              <img src="images/coop_eier.webp" alt="Eier" width="40" /><span
+                id="eggs_coop"
+              ></span>
+            </td>
+            <td>
+              <img src="images/lidl_eier.webp" alt="Eier" width="40" /><span
+                id="eggs_lidl"
+              ></span>
+            </td>
+            <td>
+              <img src="images/aldi_eier.webp" alt="Eier" width="40" /><span
+                id="eggs_aldi"
+              ></span>
+            </td>
           </tr>
         </table>
       </section>

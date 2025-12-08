@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  margin: 0px;
+  margin: 0px auto;
   padding: 0px;
   outline: 1px dashed rgba(0, 0, 0, 0.3); /* debug purpose only */
 }
@@ -11,9 +11,47 @@ body {
   background-color: #fafafa;
   color: #010101;
   padding: 1px;
+  margin: 0px auto;
 }
+
 header,
+footer,
 main {
+  text-align: center;
+  padding: 0px;
   max-width: 960px;
   margin: 5px auto;
+}
+
+table img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px auto;
+}
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Preis Farbe */
+.price-green {
+  color: #0a7d1c;
+  font-weight: bold;
+}
+.price-red {
+  color: #d90429;
+  font-weight: bold;
+}
+.price-orange {
+  color: #ff8800;
+  font-weight: bold;
 }

@@ -1,62 +1,60 @@
 const prices = {
-  milk: { migros: 1.0, coop: 1.1, lild: 0.95, aldi: 0.9 },
-  bread: { migros: 1.5, coop: 1.6, lild: 1.4, aldi: 1.3 },
-  eggs: { migros: 3.0, coop: 3.2, lild: 2.8, aldi: 2.7 },
+  milk: { migros: 2.3, coop: 1.85, lild: 1.39, aldi: 1.59 },
+  bread: { migros: 1.0, coop: 1.0, lild: 0.99, aldi: 0.99 },
+  eggs: { migros: 4.25, coop: 4.1, lild: 4.79, aldi: 4.19 },
 };
 const cb_milk = document.getElementById("cb_milk");
 const cb_bread = document.getElementById("cb_bread");
 const cb_eggs = document.getElementById("cb_eggs");
-const testCorsBtn = document.getElementById("testCorsBtn");
 
 const statusText = document.getElementById("statusText-test");
-testCorsBtn.addEventListener("click", corsHandler);
-async function corsHandler() {
-  const response = await fetch("http://localhost:3210/api/cors-test");
-  const data = await response.json();
-  console.log(data);
-  statusText.textContent = data.message;
-}
 
 cb_milk.addEventListener("change", milkHandler);
 async function milkHandler() {
   const response = await fetch("http://localhost:3210/api/select-milk");
+  const ids = ["milk_mig", "milk_coop", "milk_lidl", "milk_aldi"];
+  const values = [
+    prices.milk.migros,
+    prices.milk.coop,
+    prices.milk.lild,
+    prices.milk.aldi,
+  ];
   if (cb_milk.checked) {
+    ids.forEach((id, i) => {
+      document.getElementById(id).textContent = values[i] + " CHF";
+    });
+    colorizePrices(ids, values);
     console.log("Milch ausgewählt");
-    document.getElementById("milk_mig").textContent =
-      prices.milk.migros + " CHF";
-    document.getElementById("milk_coop").textContent =
-      prices.milk.coop + " CHF";
-    document.getElementById("milk_lidl").textContent =
-      prices.milk.lild + " CHF";
-    document.getElementById("milk_aldi").textContent =
-      prices.milk.aldi + " CHF";
   } else {
+    ids.forEach((id) => {
+      document.getElementById(id).textContent = "";
+      document.getElementById(id).className = "";
+    });
     console.log("Milch nicht ausgewählt");
-    document.getElementById("milk_mig").textContent = "";
-    document.getElementById("milk_coop").textContent = "";
-    document.getElementById("milk_lidl").textContent = "";
-    document.getElementById("milk_aldi").textContent = "";
   }
 }
 
 cb_bread.addEventListener("change", breadHandler);
 async function breadHandler() {
   const response = await fetch("http://localhost:3210/api/select-bread");
+  const ids = ["bread_mig", "bread_coop", "bread_lidl", "bread_aldi"];
+  const values = [
+    prices.bread.migros,
+    prices.bread.coop,
+    prices.bread.lild,
+    prices.bread.aldi,
+  ];
   if (cb_bread.checked) {
-    document.getElementById("bread_mig").textContent =
-      prices.bread.migros + " CHF";
-    document.getElementById("bread_coop").textContent =
-      prices.bread.coop + " CHF";
-    document.getElementById("bread_lidl").textContent =
-      prices.bread.lild + " CHF";
-    document.getElementById("bread_aldi").textContent =
-      prices.bread.aldi + " CHF";
+    ids.forEach((id, i) => {
+      document.getElementById(id).textContent = values[i] + " CHF";
+    });
+    colorizePrices(ids, values);
     console.log("Brot ausgewählt");
   } else {
-    document.getElementById("bread_mig").textContent = "";
-    document.getElementById("bread_coop").textContent = "";
-    document.getElementById("bread_lidl").textContent = "";
-    document.getElementById("bread_aldi").textContent = "";
+    ids.forEach((id) => {
+      document.getElementById(id).textContent = "";
+      document.getElementById(id).className = "";
+    });
     console.log("Brot nicht ausgewählt");
   }
 }
@@ -64,20 +62,41 @@ async function breadHandler() {
 cb_eggs.addEventListener("change", eggsHandler);
 async function eggsHandler() {
   const response = await fetch("http://localhost:3210/api/select-eggs");
+  const ids = ["eggs_mig", "eggs_coop", "eggs_lidl", "eggs_aldi"];
+  const values = [
+    prices.eggs.migros,
+    prices.eggs.coop,
+    prices.eggs.lild,
+    prices.eggs.aldi,
+  ];
   if (cb_eggs.checked) {
-    document.getElementById("eggs_mig").textContent = "3.0 CHF";
-    document.getElementById("eggs_coop").textContent =
-      prices.eggs.coop + " CHF";
-    document.getElementById("eggs_lidl").textContent =
-      prices.eggs.lild + " CHF";
-    document.getElementById("eggs_aldi").textContent =
-      prices.eggs.aldi + " CHF";
+    ids.forEach((id, i) => {
+      document.getElementById(id).textContent = values[i] + " CHF";
+    });
+    colorizePrices(ids, values);
     console.log("Eier ausgewählt");
   } else {
-    document.getElementById("eggs_mig").textContent = "";
-    document.getElementById("eggs_coop").textContent = "";
-    document.getElementById("eggs_lidl").textContent = "";
-    document.getElementById("eggs_aldi").textContent = "";
+    ids.forEach((id) => {
+      document.getElementById(id).textContent = "";
+      document.getElementById(id).className = "";
+    });
     console.log("Eier nicht ausgewählt");
   }
+}
+
+// Farbe zum Preis hinzufügen
+function colorizePrices(ids, values) {
+  // Finde Minimum und Maximum
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (values[i] === min) {
+      el.className = "price-green";
+    } else if (values[i] === max) {
+      el.className = "price-red";
+    } else {
+      el.className = "price-orange";
+    }
+  });
 }
